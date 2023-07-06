@@ -13,15 +13,15 @@ import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Color.Yellow,
-    background = Color(0xFF101010),
+    primary = DarkYellow,
+    background = DarkBlue,
     onBackground = Color.White,
-    surface = Color(0xFF303030),
+    surface = DarkGrey,
     onSurface = Color.White
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Color.Blue,
+    primary = DarkYellow,
     background = LightBlue,
     onBackground = Color.Black,
     surface = Color.White,
@@ -41,24 +41,15 @@ private val LightColorScheme = lightColorScheme(
 @Composable
 fun PokedexTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
     content: @Composable () -> Unit
 ) {
-    val colorScheme = when {
-//        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
-//            val context = LocalContext.current
-//            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
-//        }
-        darkTheme -> DarkColorScheme
-        else -> LightColorScheme
-    }
+    val colorScheme = if (darkTheme) DarkColorScheme else LightColorScheme
     val view = LocalView.current
     if (!view.isInEditMode) {
         SideEffect {
             val window = (view.context as Activity).window
-            window.statusBarColor = colorScheme.primary.toArgb()
-            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme
+            window.statusBarColor = Color.Black.toArgb()
+            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = false
         }
     }
 

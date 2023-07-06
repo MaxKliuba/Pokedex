@@ -28,8 +28,6 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.font.FontStyle
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -76,8 +74,8 @@ fun PokemonListItem(
                 loading = {
                     CircularProgressIndicator(
                         color = MaterialTheme.colorScheme.primary,
-                        strokeWidth = 8.dp,
-                        modifier = Modifier.scale(0.5f)
+                        strokeWidth = 12.dp,
+                        modifier = Modifier.scale(0.4f)
                     )
                 },
                 onSuccess = {
