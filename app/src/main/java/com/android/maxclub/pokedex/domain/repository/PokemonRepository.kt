@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface PokemonRepository {
 
-    fun getPokemonList(pageSize: Int): Flow<PagingData<PokemonListItem>>
+    fun getPagingPokemonList(pageSize: Int): Flow<PagingData<PokemonListItem>>
 
     fun getPokemon(pokemonName: String): Flow<Resource<Pokemon>>
 }

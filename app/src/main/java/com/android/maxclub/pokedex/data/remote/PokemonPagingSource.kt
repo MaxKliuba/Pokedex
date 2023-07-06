@@ -3,20 +3,19 @@ package com.android.maxclub.pokedex.data.remote
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.android.maxclub.pokedex.data.remote.PokeApi.Companion.STARTING_PAGE_INDEX
-import com.android.maxclub.pokedex.domain.model.PokemonListItem
-import com.android.maxclub.pokedex.domain.model.toPokemonListItem
+import com.android.maxclub.pokedex.data.remote.dto.PokemonListItemDto
 
 class PokemonPagingSource(
     private val pokeApi: PokeApi
-) : PagingSource<Int, PokemonListItem>() {
+) : PagingSource<Int, PokemonListItemDto>() {
 
-    override fun getRefreshKey(state: PagingState<Int, PokemonListItem>): Int? =
+    override fun getRefreshKey(state: PagingState<Int, PokemonListItemDto>): Int? =
         state.anchorPosition?.let { anchorPosition ->
             state.closestPageToPosition(anchorPosition)?.prevKey?.plus(1)
                 ?: state.closestPageToPosition(anchorPosition)?.nextKey?.minus(1)
         }
 
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, PokemonListItem> =
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, PokemonListItemDto> =
         try {
             val page = params.key ?: STARTING_PAGE_INDEX
 
@@ -27,7 +26,7 @@ class PokemonPagingSource(
             )
 
             LoadResult.Page(
-                data = response.results.map { it.toPokemonListItem() },
+                data = response.results,
                 prevKey = if (page == STARTING_PAGE_INDEX) null else page - 1,
                 nextKey = if (response.next == null) null else page + 1,
             )
