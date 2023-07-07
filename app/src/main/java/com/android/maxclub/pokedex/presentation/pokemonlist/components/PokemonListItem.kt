@@ -75,7 +75,7 @@ fun PokemonListItem(
                     CircularProgressIndicator(
                         color = MaterialTheme.colorScheme.primary,
                         strokeWidth = 12.dp,
-                        modifier = Modifier.scale(0.4f)
+                        modifier = Modifier.scale(0.35f)
                     )
                 },
                 onSuccess = {
@@ -98,7 +98,7 @@ fun PokemonListItem(
     }
 }
 
-fun calculateDominantColor(drawable: Drawable, onFinish: (Color) -> Unit) {
+private fun calculateDominantColor(drawable: Drawable, onFinish: (Color) -> Unit) {
     val bitmap = (drawable as BitmapDrawable).bitmap.copy(Bitmap.Config.ARGB_8888, true)
 
     Palette.from(bitmap).generate { palette ->

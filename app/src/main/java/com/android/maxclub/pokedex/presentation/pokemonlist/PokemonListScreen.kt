@@ -26,16 +26,13 @@ fun PokemonListScreen(
         modifier = Modifier.fillMaxSize()
     ) {
         Column {
-            PokemonListTopSection(
-                modifier = Modifier
-                    .fillMaxWidth()
-            )
+            PokemonListTopSection(modifier = Modifier.fillMaxWidth())
 
             PokemonList(
                 pokemonList = pokemonList,
                 onItemClick = { pokemonName, dominantColor ->
                     navController.navigate("${Screen.PokemonDetail.route}/$pokemonName/$dominantColor")
-                },
+                }
             )
         }
     }

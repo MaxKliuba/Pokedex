@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.android.maxclub.pokedex.R
 
@@ -32,7 +33,7 @@ fun PokemonListTopSection(
     ) {
         Image(
             painter = painterResource(id = R.drawable.ic_pokemon_logo),
-            contentDescription = "Pokemon",
+            contentDescription = stringResource(R.string.pokemon_title),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(16.dp)
