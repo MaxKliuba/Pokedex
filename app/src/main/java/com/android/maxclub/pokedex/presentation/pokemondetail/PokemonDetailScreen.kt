@@ -31,7 +31,7 @@ fun PokemonDetailScreen(
             .padding(bottom = 16.dp)
     ) {
         PokemonDetailTopSection(
-            onBackClick = { navController.navigateUp() },
+            onBackClick = navController::navigateUp,
             modifier = Modifier
                 .fillMaxWidth()
                 .fillMaxHeight(0.2f)
