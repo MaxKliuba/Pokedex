@@ -11,6 +11,7 @@ import androidx.navigation.navArgument
 import com.android.maxclub.pokedex.presentation.pokemondetail.PokemonDetailScreen
 import com.android.maxclub.pokedex.presentation.pokemonlist.PokemonListScreen
 import com.android.maxclub.pokedex.ui.theme.PokedexTheme
+import com.android.maxclub.pokedex.util.Screen
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

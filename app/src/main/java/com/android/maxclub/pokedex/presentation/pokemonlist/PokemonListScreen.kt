@@ -10,7 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.paging.compose.collectAsLazyPagingItems
-import com.android.maxclub.pokedex.presentation.Screen
+import com.android.maxclub.pokedex.util.Screen
 import com.android.maxclub.pokedex.presentation.pokemonlist.components.PokemonList
 import com.android.maxclub.pokedex.presentation.pokemonlist.components.PokemonListTopSection
 

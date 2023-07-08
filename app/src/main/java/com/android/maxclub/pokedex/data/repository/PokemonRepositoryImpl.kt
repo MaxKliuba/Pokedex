@@ -4,12 +4,12 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.map
+import com.android.maxclub.pokedex.data.mappers.toPokemon
+import com.android.maxclub.pokedex.data.mappers.toPokemonListItem
 import com.android.maxclub.pokedex.data.remote.PokeApi
 import com.android.maxclub.pokedex.data.remote.PokemonPagingSource
 import com.android.maxclub.pokedex.domain.model.Pokemon
 import com.android.maxclub.pokedex.domain.model.PokemonListItem
-import com.android.maxclub.pokedex.domain.model.toPokemon
-import com.android.maxclub.pokedex.domain.model.toPokemonListItem
 import com.android.maxclub.pokedex.domain.repository.PokemonRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -38,8 +38,7 @@ class PokemonRepositoryImpl @Inject constructor(
 
     override fun getPokemon(pokemonName: String): Flow<Pokemon> = flow {
         emit(
-            pokeApi.getPokemon(pokemonName)
-                .toPokemon()
+            pokeApi.getPokemon(pokemonName).toPokemon()
         )
     }.flowOn(Dispatchers.IO)
 }

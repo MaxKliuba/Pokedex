@@ -8,7 +8,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.android.maxclub.pokedex.R
 import com.android.maxclub.pokedex.domain.repository.PokemonRepository
-import com.android.maxclub.pokedex.presentation.Screen
+import com.android.maxclub.pokedex.util.Screen
 import com.android.maxclub.pokedex.util.LocalString
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job

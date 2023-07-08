@@ -1,4 +1,4 @@
-package com.android.maxclub.pokedex.presentation
+package com.android.maxclub.pokedex.util
 
 sealed class Screen(val route: String) {
     object PokemonListScreen : Screen("pokemon_list_screen")
