@@ -11,7 +11,6 @@ import com.android.maxclub.pokedex.domain.model.PokemonListItem
 import com.android.maxclub.pokedex.domain.model.toPokemon
 import com.android.maxclub.pokedex.domain.model.toPokemonListItem
 import com.android.maxclub.pokedex.domain.repository.PokemonRepository
-import com.android.maxclub.pokedex.util.Resource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -37,15 +36,10 @@ class PokemonRepositoryImpl @Inject constructor(
                 pagingData.map { it.toPokemonListItem() }
             }
 
-    override fun getPokemon(pokemonName: String): Flow<Resource<Pokemon>> = flow {
-        emit(Resource.Loading())
-
-        try {
-            val response = pokeApi.getPokemon(pokemonName)
-
-            emit(Resource.Success(response.toPokemon()))
-        } catch (e: Exception) {
-            emit(Resource.Error(e.toString()))
-        }
+    override fun getPokemon(pokemonName: String): Flow<Pokemon> = flow {
+        emit(
+            pokeApi.getPokemon(pokemonName)
+                .toPokemon()
+        )
     }.flowOn(Dispatchers.IO)
 }

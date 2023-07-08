@@ -3,12 +3,14 @@ package com.android.maxclub.pokedex.presentation.pokemonlist.components
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.CircularProgressIndicator
@@ -26,15 +28,20 @@ import androidx.compose.ui.draw.scale
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.palette.graphics.Palette
 import coil.compose.SubcomposeAsyncImage
+import coil.decode.SvgDecoder
 import coil.request.ImageRequest
+import com.android.maxclub.pokedex.R
 import com.android.maxclub.pokedex.domain.model.PokemonListItem
+import java.util.Locale
 
 @Composable
 fun PokemonListItem(
@@ -69,6 +76,7 @@ fun PokemonListItem(
             SubcomposeAsyncImage(
                 model = ImageRequest.Builder(LocalContext.current)
                     .data(pokemonListItem.imageUrl)
+                    .decoderFactory(SvgDecoder.Factory())
                     .crossfade(true)
                     .build(),
                 loading = {
@@ -83,16 +91,26 @@ fun PokemonListItem(
                         dominantColor = color
                     }
                 },
+                error = {
+                    Image(
+                        painter = painterResource(id = R.drawable.ic_unknown_pokemon),
+                        contentDescription = null,
+                        colorFilter = ColorFilter.tint(color = MaterialTheme.colorScheme.primary)
+                    )
+                },
                 contentDescription = pokemonListItem.pokemonName,
                 modifier = Modifier
                     .size(120.dp)
                     .align(Alignment.CenterHorizontally)
+                    .padding(8.dp)
             )
             Text(
-                text = pokemonListItem.pokemonName,
+                text = pokemonListItem.pokemonName.capitalize(Locale.ROOT),
                 fontSize = 22.sp,
                 textAlign = TextAlign.Center,
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp)
             )
         }
     }

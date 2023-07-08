@@ -1,7 +1,8 @@
 package com.android.maxclub.pokedex.domain.model
 
 import com.android.maxclub.pokedex.data.remote.dto.PokemonListItemDto
-import com.android.maxclub.pokedex.util.POKEMON_IMAGE_URL
+import com.android.maxclub.pokedex.util.POKEMON_IMAGE_BASE_URL
+import com.android.maxclub.pokedex.util.POKEMON_IMAGE_FORMAT
 import java.util.Locale
 
 data class PokemonListItem(
@@ -17,7 +18,7 @@ fun PokemonListItemDto.toPokemonListItem(): PokemonListItem {
 
     return PokemonListItem(
         id = id,
-        pokemonName = name.capitalize(Locale.ROOT),
-        imageUrl = "$POKEMON_IMAGE_URL$id.png",
+        pokemonName = name,
+        imageUrl = "$POKEMON_IMAGE_BASE_URL$id$POKEMON_IMAGE_FORMAT",
     )
 }
