@@ -26,6 +26,7 @@ class PokemonRepositoryImpl @Inject constructor(
         Pager(
             config = PagingConfig(
                 pageSize = pageSize,
+                enablePlaceholders = false,
             ),
             pagingSourceFactory = {
                 PokemonPagingSource(pokeApi)

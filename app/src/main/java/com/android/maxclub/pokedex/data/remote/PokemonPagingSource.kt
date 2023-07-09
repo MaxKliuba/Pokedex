@@ -17,7 +17,8 @@ class PokemonPagingSource(
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, PokemonListItemDto> =
         try {
-            val page = params.key ?: STARTING_PAGE_INDEX
+            val page = params.key?.div(params.loadSize)?.plus(STARTING_PAGE_INDEX)
+                ?: STARTING_PAGE_INDEX
 
             // loadSize = 3 * pageSize
             val response = pokeApi.getPokemonList(
@@ -27,8 +28,8 @@ class PokemonPagingSource(
 
             LoadResult.Page(
                 data = response.results,
-                prevKey = if (page == STARTING_PAGE_INDEX) null else page - 1,
-                nextKey = if (response.next == null) null else page + 1,
+                prevKey = if (page == STARTING_PAGE_INDEX) null else (page - 1) * params.loadSize,
+                nextKey = if (response.next == null) null else (page + 1) * params.loadSize,
             )
         } catch (e: Exception) {
             LoadResult.Error(e)

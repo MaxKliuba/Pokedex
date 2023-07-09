@@ -2,6 +2,7 @@
     <string name="app_name">Pokedex</string>
     <string name="pokemon_title">Pokemon</string>
     <string name="navigate_up_text">Navigate up</string>
+    <string name="search_hint">Search…</string>
     <string name="retry_text">Retry</string>
     <string name="some_error_message">Some error</string>
 </resources>

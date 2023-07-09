@@ -1,8 +1,5 @@
 package com.android.maxclub.pokedex.presentation.pokemonlist.components
 
-import android.graphics.Bitmap
-import android.graphics.drawable.BitmapDrawable
-import android.graphics.drawable.Drawable
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -27,20 +24,20 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.palette.graphics.Palette
 import coil.compose.SubcomposeAsyncImage
 import coil.decode.SvgDecoder
 import coil.request.ImageRequest
 import com.android.maxclub.pokedex.R
 import com.android.maxclub.pokedex.domain.model.PokemonListItem
+import com.android.maxclub.pokedex.util.calculateDominantColor
 import java.util.Locale
 
 @Composable
@@ -102,26 +99,18 @@ fun PokemonListItem(
                 modifier = Modifier
                     .size(120.dp)
                     .align(Alignment.CenterHorizontally)
-                    .padding(8.dp)
+                    .padding(4.dp)
             )
             Text(
-                text = pokemonListItem.pokemonName.capitalize(Locale.ROOT),
+                text = "#${pokemonListItem.id} ${pokemonListItem.pokemonName.capitalize(Locale.ROOT)}",
                 fontSize = 22.sp,
                 textAlign = TextAlign.Center,
+                overflow = TextOverflow.Ellipsis,
+                maxLines = 1,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(8.dp)
+                    .padding(4.dp)
             )
-        }
-    }
-}
-
-private fun calculateDominantColor(drawable: Drawable, onFinish: (Color) -> Unit) {
-    val bitmap = (drawable as BitmapDrawable).bitmap.copy(Bitmap.Config.ARGB_8888, true)
-
-    Palette.from(bitmap).generate { palette ->
-        palette?.dominantSwatch?.rgb?.let {
-            onFinish(Color(it))
         }
     }
 }
