@@ -7,7 +7,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 
 @Composable
-fun PokemonListLoading(
+fun PokemonListLoadingSection(
     modifier: Modifier = Modifier
 ) {
     Box(

@@ -5,4 +5,7 @@
     <string name="search_hint">Search…</string>
     <string name="retry_text">Retry</string>
     <string name="some_error_message">Some error</string>
+    <string name="kg_text">kg</string>
+    <string name="m_text">m</string>
+    <string name="base_stats_title">Base stats:</string>
 </resources>

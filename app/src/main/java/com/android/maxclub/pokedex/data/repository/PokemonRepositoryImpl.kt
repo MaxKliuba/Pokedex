@@ -38,8 +38,6 @@ class PokemonRepositoryImpl @Inject constructor(
             }
 
     override fun getPokemon(pokemonName: String): Flow<Pokemon> = flow {
-        emit(
-            pokeApi.getPokemon(pokemonName).toPokemon()
-        )
+        emit(pokeApi.getPokemon(pokemonName).toPokemon())
     }.flowOn(Dispatchers.IO)
 }

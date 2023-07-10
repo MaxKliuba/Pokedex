@@ -23,12 +23,12 @@ fun PokemonList(
         modifier = modifier
     ) {
         item(span = { GridItemSpan(maxLineSpan) }) {
-            PokemonListLoadState(
+            PokemonListLoadStateWrapper(
                 state = pokemonList.loadState.prepend,
                 onRetry = pokemonList::retry
             )
 
-            PokemonListLoadState(
+            PokemonListLoadStateWrapper(
                 state = pokemonList.loadState.refresh,
                 onRetry = pokemonList::retry
             )
@@ -48,7 +48,7 @@ fun PokemonList(
         }
 
         item(span = { GridItemSpan(maxLineSpan) }) {
-            PokemonListLoadState(
+            PokemonListLoadStateWrapper(
                 state = pokemonList.loadState.append,
                 onRetry = pokemonList::retry
             )

@@ -2,8 +2,9 @@ package com.android.maxclub.pokedex.presentation.pokemonlist.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -18,12 +19,13 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.android.maxclub.pokedex.R
 
 @Composable
-fun PokemonListError(
+fun PokemonListErrorSection(
     errorMessage: String,
     onRetry: () -> Unit,
     modifier: Modifier = Modifier
@@ -35,18 +37,18 @@ fun PokemonListError(
             .clip(RoundedCornerShape(24.dp))
             .background(color = MaterialTheme.colorScheme.surface)
     ) {
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier.padding(16.dp)
         ) {
             Text(
                 text = errorMessage,
-                fontSize = 16.sp,
-
-                modifier = Modifier.weight(1f)
+                color = MaterialTheme.colorScheme.onSurface,
+                fontSize = 18.sp,
+                textAlign = TextAlign.Center
             )
 
-            Spacer(modifier = Modifier.width(16.dp))
+            Spacer(modifier = Modifier.height(16.dp))
 
             Button(onClick = onRetry) {
                 Icon(

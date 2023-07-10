@@ -11,20 +11,20 @@ import androidx.paging.LoadState
 import com.android.maxclub.pokedex.R
 
 @Composable
-fun PokemonListLoadState(
+fun PokemonListLoadStateWrapper(
     state: LoadState,
     onRetry: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Box(modifier = modifier) {
         when (state) {
-            is LoadState.Loading -> PokemonListLoading(
+            is LoadState.Loading -> PokemonListLoadingSection(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(8.dp)
             )
 
-            is LoadState.Error -> PokemonListError(
+            is LoadState.Error -> PokemonListErrorSection(
                 errorMessage = state.error.message ?: stringResource(R.string.some_error_message),
                 onRetry = onRetry,
                 modifier = Modifier

@@ -6,7 +6,6 @@ import com.android.maxclub.pokedex.domain.model.PokemonType
 import com.android.maxclub.pokedex.ui.theme.AtkColor
 import com.android.maxclub.pokedex.ui.theme.DefColor
 import com.android.maxclub.pokedex.ui.theme.HPColor
-import com.android.maxclub.pokedex.ui.theme.LightGrey
 import com.android.maxclub.pokedex.ui.theme.SpAtkColor
 import com.android.maxclub.pokedex.ui.theme.SpDefColor
 import com.android.maxclub.pokedex.ui.theme.SpdColor
@@ -50,7 +49,7 @@ fun PokemonType.toColor(): Color =
         "dark" -> TypeDark
         "steel" -> TypeSteel
         "fairy" -> TypeFairy
-        else -> Color.Black
+        else -> Color.Gray
     }
 
 fun PokemonStat.toColor(): Color =
@@ -61,7 +60,7 @@ fun PokemonStat.toColor(): Color =
         "special-attack" -> SpAtkColor
         "special-defense" -> SpDefColor
         "speed" -> SpdColor
-        else -> LightGrey
+        else -> Color.Gray
     }
 
 fun String.toPokemonStatAbbr(): String =
